@@ -14,4 +14,8 @@ class FrontController extends Controller
 
         return view('front.index', compact('products', 'categories'));
     }
+
+    public function details(Product $product) {
+        return view('front.details', compact('product'));
+    }
 }
