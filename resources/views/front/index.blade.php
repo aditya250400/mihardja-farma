@@ -8,6 +8,8 @@
     <link rel="shortcut icon" href="{{ asset('svgs/logo-mark.svg') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
 <body>
@@ -88,10 +90,11 @@
             We Provide <br>
             Best Medicines
         </p>
-        <form action="" method="POST" id="searchForm" class="w-full">
-            <input type="text" name="search" id="searchProduct"
-                class="block w-full py-3.5 pl-4 pr-10 rounded-[50px] font-semibold placeholder:text-grey placeholder:font-normal text-black text-base bg-no-repeat bg-[calc(100%-16px)] bg-[url({{ asset('svgs/ic-search.svg') }})] focus:ring-2 focus:ring-primary focus:outline-none focus:border-none transition-all"
+        <form action="{{ route('front.search') }}" method="GET" id="searchForm" class="w-full flex items-center gap-2 overflow-hidden">
+            <input type="text" name="keyword" id="searchProduct"
+                class="block w-full py-3.5 pl-4 pr-10 rounded-s-[50px] font-semibold placeholder:text-grey placeholder:font-normal text-black text-base bg-[calc(100%-16px)] focus:outline-none focus:border-none transition-all"
                 placeholder="Search by product name">
+                <button type="submit" class="bg-white h-full rounded-e-[50px]">Search</button>
         </form>
     </section>
 
@@ -116,7 +119,7 @@
             @forelse ($categories as $category)
                 <div class="inline-flex gap-2.5 items-center py-3 px-3.5 relative bg-white rounded-xl mr-4">
                     <img src="{{ Storage::url($category->icon) }}" class="size-10" alt="">
-                    <a href="#" class="text-base font-semibold truncate stretched-link">
+                    <a href="{{ route('front.product.category', $category) }}" class="text-base font-semibold truncate stretched-link">
                         {{ $category->name }}
                     </a>
                 </div>
@@ -254,7 +257,6 @@
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
     <script src="{{ asset('scripts/sliderConfig.js') }}" type="module"></script>
-    <script src="{{ asset('scripts/searchProductListener.js') }}" type="module"></script>
 </body>
 
 </html>

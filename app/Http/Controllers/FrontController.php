@@ -18,4 +18,17 @@ class FrontController extends Controller
     public function details(Product $product) {
         return view('front.details', compact('product'));
     }
+
+    public function search(Request $request) {
+        $keyword = $request->input('keyword');
+        $products = Product::where('name', 'LIKE', '%'. $keyword. '%')->get();
+
+        return view('front.search', compact('products', 'keyword'));
+
+    }
+
+    public function category(Category $category) {
+        $products = Product::where('category_id', $category->id)->with('category')->get();
+        return view('front.category', compact('products', 'category'));
+    }
 }
