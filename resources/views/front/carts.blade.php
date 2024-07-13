@@ -252,10 +252,8 @@
 
             document.getElementById('checkout-sub-total').textContent = 'Rp ' + subTotal.toLocaleString('id', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-            const tax = 11 * subTotal / 100;
-            document.getElementById('checkout-ppn').textContent = 'Rp ' + tax.toLocaleString('id', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
-            const grandTotalPrice = subTotal + tax + deliveryFee;
+            const grandTotalPrice = subTotal + deliveryFee;
             document.getElementById('checkout-grand-total').textContent = 'Rp ' + grandTotalPrice.toLocaleString('id', {minimumFractionDigits: 2, maximumFractionDigits: 2});
 
             document.getElementById('checkout-grand-total-price').textContent = 'Rp ' + grandTotalPrice.toLocaleString('id', {minimumFractionDigits: 2, maximumFractionDigits: 2});
