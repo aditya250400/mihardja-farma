@@ -10,7 +10,7 @@ class FrontController extends Controller
 {
     public function index() {
         $products = Product::with('category')->latest()->take(6)->get();
-        $categories = Category::all();
+        $categories = Category::latest()->take(4)->get();
 
         return view('front.index', compact('products', 'categories'));
     }
