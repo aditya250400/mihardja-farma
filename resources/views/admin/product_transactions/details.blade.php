@@ -34,7 +34,7 @@
                             <h3 class="block md:hidden text-xl font-bold text-indigo-950">
                                 Status
                             </h3>
-                            <p class="rounded-full w-fit mt-2 p-2 bg-orange-500 text-base text-white">SUCCESS</p>
+                            <p class="rounded-full w-fit mt-2 p-2 bg-orange-500 text-base text-white">PENDING</p>
 
                         </div>
                     @endif

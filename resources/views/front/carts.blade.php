@@ -17,11 +17,9 @@
       <p class="text-base font-bold">
         Items
       </p>
-      <button type="button" class="p-2 bg-white rounded-full" data-expand="itemsList">
-        <img src="{{ asset('svgs/ic-chevron.svg') }}" class="transition-all duration-300 -rotate-180 size-5" alt="">
-      </button>
+
     </div>
-    <div class="flex flex-col gap-4" id="itemsList">
+    <div class="flex flex-col gap-4">
 
      @forelse ($myCarts as $cart)
      <div class="py-3.5 pl-4 pr-[22px] bg-white rounded-2xl flex gap-2 items-center relative">
@@ -93,10 +91,10 @@
   <section class="wrapper flex flex-col gap-2.5">
     <div class="flex items-center justify-between">
       <p class="text-base font-bold">
-        Payment Method
+        Send Payment to
       </p>
     </div>
-    <div class="grid items-center grid-cols-2 gap-4">
+    {{-- <div class="grid items-center grid-cols-2 gap-4">
       <label
         class="relative rounded-2xl bg-white flex gap-2.5 px-3.5 py-3 items-center justify-start has-[:checked]:ring-2 has-[:checked]:ring-primary transition-all">
         <input type="radio" name="payment_method" id="manualMethod" class="absolute opacity-0">
@@ -112,17 +110,14 @@
         <p class="text-base font-semibold">
           Credits
         </p>
-        </lab>
-    </div>
-    <div class="p-4 mt-0.5 bg-white rounded-3xl hidden" id="manualPaymentDetail">
+        </label>
+    </div> --}}
+    <div class="p-4 mt-0.5 bg-white rounded-3xl">
       <div class="flex flex-col gap-5">
-        <p class="text-base font-bold">
-          Send Payment to
-        </p>
         <div class="inline-flex items-center gap-2.5">
           <img src="{{ asset('svgs/ic-bank.svg') }}" class="size-5" alt="">
           <p class="text-base font-semibold">
-            Send Payment to
+            2389203890
           </p>
         </div>
         <div class="inline-flex items-center gap-2.5">
@@ -148,42 +143,58 @@
       <div class="flex flex-col gap-5">
         <!-- Address -->
         <div class="flex flex-col gap-2.5">
-          <label for="address" class="text-base font-semibold">Address</label>
+          <div class="flex gap-1 items-center">
+            <label for="address" class="text-base font-semibold">Address</label>
+          <img src="{{ asset('svgs/ic-location.svg') }}" class="size-5" alt="">
+          </div>
           <input type="text" name="address" id="address__"
-            class="form-input bg-[url({{ asset('svgs/ic-location.svg') }})]" value="Tedjamudita 3">
+            class="form-input" value="Tedjamudita 3">
         </div>
         <!-- City -->
         <div class="flex flex-col gap-2.5">
-          <label for="city" class="text-base font-semibold">City</label>
-          <input type="text" name="city" id="city__" class="form-input bg-[url({{ asset('svgs/ic-map.svg') }})]"
+          <div class="flex items-center gap-1">
+            <label for="city" class="text-base font-semibold">City</label>
+            <img src="{{ asset('svgs/ic-map.svg') }}" class="size-5" alt="">
+          </div>
+          <input type="text" name="city" id="city__"
             value="Bolavia">
         </div>
         <!-- Post Code -->
         <div class="flex flex-col gap-2.5">
-          <label for="post_code" class="text-base font-semibold">Post Code</label>
+            <div class="flex items-center gap-1">
+                <label for="post_code" class="text-base font-semibold">Post Code</label>
+                <img src="{{ asset('svgs/ic-house.svg') }}" class="size-5" alt="">
+              </div>
           <input type="number" name="post_code" id="postcode__"
-            class="form-input bg-[url({{ asset('svgs/ic-house.svg') }})]" value="22081882">
+            class="form-input" value="22081882">
         </div>
         <!-- Phone Number -->
         <div class="flex flex-col gap-2.5">
-          <label for="phone_number" class="text-base font-semibold">Phone Number</label>
+            <div class="flex items-center gap-1">
+                <label for="phone_number" class="text-base font-semibold">Phone Number</label>
+                <img src="{{ asset('svgs/ic-phone.svg') }}" class="size-5" alt="">
+              </div>
           <input type="number" name="phone_number" id="phonenumber__"
-            class="form-input bg-[url({{ asset('svgs/ic-phone.svg') }})]" value="602192301923">
+            class="form-input" value="602192301923">
         </div>
         <!-- Add. Notes -->
         <div class="flex flex-col gap-2.5">
-          <label for="notes" class="text-base font-semibold">Add. Notes</label>
-          <span class="relative">
-            <img src="{{ asset('svgs/ic-edit.svg') }}" class="absolute size-5 top-4 left-4" alt="">
+            <div class="flex items-center gap-1">
+
+                <label for="notes" class="text-base font-semibold">Add. Notes</label>
+                <img src="{{ asset('svgs/ic-edit.svg') }}" class="size-5 " alt="">
+            </div>
             <textarea name="notes" id="notes__"
               class="form-input !rounded-2xl w-full min-h-[150px]">nearby with local shops that close with the big river next to aftermarket place.</textarea>
-          </span>
         </div>
         <!-- Proof of Payment -->
         <div class="flex flex-col gap-2.5">
-          <label for="proof" class="text-base font-semibold">Proof of Payment</label>
+            <div class="flex items-center gap-1">
+                <label for="proof" class="text-base font-semibold">Proof of Payment</label>
+                <img src="{{ asset('svgs/ic-folder-add.svg') }}" class="size-5 " alt="">
+            </div>
           <input type="file" name="proof" id="proof_of_payment__"
-            class="form-input bg-[url('{{ asset('svgs/ic-folder-add.svg') }}')]">
+            class="">
         </div>
       </div>
       </div>

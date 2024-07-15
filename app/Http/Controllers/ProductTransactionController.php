@@ -62,9 +62,8 @@ class ProductTransactionController extends Controller
                 $subTotalCents += $item->product->price * 100;
             }
 
-            $taxCents = (int)round(11 * $subTotalCents / 100);
 
-            $grandTotalCents = $subTotalCents + $taxCents + $deliveryFeeCents;
+            $grandTotalCents = $subTotalCents + $deliveryFeeCents;
 
             $grandTotal = $grandTotalCents / 100;
 
