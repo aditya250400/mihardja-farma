@@ -58,11 +58,9 @@
       <p class="text-base font-bold">
         Details Payment
       </p>
-      <button type="button" class="p-2 bg-white rounded-full" data-expand="__detailsPayment">
-        <img src="{{ asset('svgs/ic-chevron.svg') }}" class="transition-all duration-300 size-5" alt="">
-      </button>
+
     </div>
-    <div class="p-6 bg-white rounded-3xl" id="__detailsPayment" style="display: none;">
+    <div class="p-6 bg-white rounded-3xl" >
       <ul class="flex flex-col gap-5">
         <li class="flex items-center justify-between">
           <p class="text-base font-semibold first:font-normal">
@@ -71,13 +69,7 @@
           <p class="text-base font-semibold first:font-normal" id="checkout-sub-total">
           </p>
         </li>
-        <li class="flex items-center justify-between">
-          <p class="text-base font-semibold first:font-normal">
-            PPN 11%
-          </p>
-          <p class="text-base font-semibold first:font-normal" id="checkout-ppn">
-          </p>
-        </li>
+
 
         <li class="flex items-center justify-between">
           <p class="text-base font-semibold first:font-normal">
@@ -149,11 +141,9 @@
       <p class="text-base font-bold">
         Delivery to
       </p>
-      <button type="button" class="p-2 bg-white rounded-full" data-expand="deliveryForm">
-        <img src="{{ asset('svgs/ic-chevron.svg') }}" class="transition-all duration-300 -rotate-180 size-5" alt="">
-      </button>
+
     </div>
-    <form action="{{ route('product_transactions.store') }}" method="POST" class="p-6 bg-white rounded-3xl" id="deliveryForm" enctype="multipart/form-data">
+    <form action="{{ route('product_transactions.store') }}" method="POST" class="p-6 bg-white rounded-3xl" enctype="multipart/form-data">
       @csrf
       <div class="flex flex-col gap-5">
         <!-- Address -->
