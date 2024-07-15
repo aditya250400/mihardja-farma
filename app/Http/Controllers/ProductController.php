@@ -43,27 +43,16 @@ class ProductController extends Controller
             'category_id' => 'required|integer',
         ]);
 
-        DB::beginTransaction();
 
-        try {
-            if($request->hasFile('photo')) {
-                $photoPath = $request->file('photo')->store('product_photos', 'public');
-                $validated['photo'] = $photoPath;
-            }
-            $validated['slug'] = Str::slug($request->name);
-
-            $newProduct = Product::create($validated);
-            DB::commit();
-
-            return redirect()->route('admin.products.index');
-        }catch(\Exception $e) {
-            DB::rollBack();
-            $error = ValidationException::withMessages([
-                'systemm_error' => ['System error!' => $e->getMessage()],
-            ]);
-
-            throw $error;
+        if($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('product_photos', 'public');
+            $validated['photo'] = $photoPath;
         }
+        $validated['slug'] = Str::slug($request->name);
+
+        $newProduct = Product::create($validated);
+
+        return redirect()->route('admin.products.index');
     }
 
     /**

@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('title', 'Mihardja Farma | Edit Product')
 @section('content')
+@include('layouts.newNavigation')
+
 
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

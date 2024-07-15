@@ -16,12 +16,9 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased mx-2 md:max-w-screen-2xl lg:mx-auto">
+    <body class="font-sans antialiased  md:max-w-screen-2xl lg:mx-auto">
         <div class="min-h-screen">
-            @include('layouts.newNavigation')
-            <main>
-                @yield('content')
-            </main>
+            @yield('content')
         </div>
     </body>
 </html>

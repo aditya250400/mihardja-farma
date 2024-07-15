@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 class FrontController extends Controller
 {
     public function index() {
-        $products = Product::with('category')->latest()->take(6)->get();
+        $products = Product::with('category')->latest()->take(4)->get();
         $categories = Category::latest()->take(4)->get();
+        $mostPurchased = Product::withCount('transactionDetails')->orderBy('transaction_details_count', 'DESC')->take(3)->get();
 
-        return view('front.index', compact('products', 'categories'));
+        return view('front.index', compact('products', 'categories', 'mostPurchased'));
     }
 
     public function details(Product $product) {
