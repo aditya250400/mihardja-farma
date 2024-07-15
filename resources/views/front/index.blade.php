@@ -62,7 +62,7 @@
                     Explore the  <br>
                     best of our products
                 </p>
-                <a href="#"
+                <a href="{{ route('front.products') }}"
                 class="rounded-full bg-white text-primary flex w-max gap-2.5 px-6 py-2 justify-center items-center text-base font-bold">
                 Explore
             </a>
@@ -77,7 +77,7 @@
         <p class="text-base font-bold">
             Categories
         </p>
-        <a href="#" class="text-blue-500 font-bold">See All</a>
+        <a href="{{ route('front.categories') }}" class="text-blue-500 font-bold">See All</a>
        </div>
         <div class="flex px-4 w-full ">
             @forelse ($categories as $category)
@@ -103,7 +103,7 @@
             <p class="text-base font-bold">
                 Our New Products
             </p>
-            <a href="#" class="text-blue-500 font-bold">See All</a>
+            <a href="{{ route('front.products') }}" class="text-blue-500 font-bold">See All</a>
            </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-2 place-items-center">
             @forelse ($products as $product)

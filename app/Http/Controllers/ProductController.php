@@ -21,6 +21,14 @@ class ProductController extends Controller
         return view('admin.products.index', compact('products'));
     }
 
+    public function products() {
+        $products = Product::with('category')->latest()->get();
+
+        return view('front.products', compact('products'));
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      */

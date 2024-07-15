@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontController::class, 'index'])->name('front.index');
 Route::get('/search', [FrontController::class, 'search'])->name('front.search');
+Route::get('/products', [ProductController::class, 'products'])->name('front.products');
+Route::get('/categories', [CategoryController::class, 'categories'])->name('front.categories');
 Route::get('/details/{product:slug}', [FrontController::class, 'details'])->name('front.product.details');
 Route::get('/category/{category}', [FrontController::class, 'category'])->name('front.product.category');
 

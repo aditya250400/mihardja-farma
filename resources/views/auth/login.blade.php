@@ -15,7 +15,10 @@
 
     <div class="flex flex-col items-center px-6 py-10 min-h-dvh">
       <div class="flex justify-center">
-        <img src="{{ asset('svgs/logo.svg') }}" class="mb-[40px]" alt="">
+          <div class="flex items-center gap-3">
+            <img src="{{ asset('svgs/logo-mark.svg') }}" class="" alt="">
+          <h1 class="text-xl md:text-2xl font-extrabold">Mihardja Farma</h1>
+          </div>
       </div>
       <form action="{{ route('login') }}" method="POST" class="mx-auto max-w-[345px] w-full p-6 bg-white rounded-3xl mt-auto" id="deliveryForm">
         @csrf

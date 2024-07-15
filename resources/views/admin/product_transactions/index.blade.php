@@ -1,48 +1,75 @@
 @extends('layouts.app')
 @section('title', 'Mihardja Farma | Transactions')
 @section('content')
-@include('layouts.newNavigation')
-<div class="py-12">
-    <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white flex flex-col gap-y-5 overflow-hidden shadow-sm p-5  sm:rounded-lg">
-           @forelse ($product_transactions as $transaction )
-           <div class="item-card flex flex-row items-center justify-between">
-            <div class="flex flex-row items-center gap-x-3">
-                <div>
-                    <h3 class="text-xl font-bold text-indigo-950">
-                        Total Transaksi
-                    </h3>
-                    <p class="text-base text-slate-500">RP. {{ $transaction->total_amount }}</p>
-                </div>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold text-indigo-950">
-                    Date
-                </h3>
-                <p class="text-base text-slate-500">{{ $transaction->created_at }}</p>
-            </div>
-            @if ($transaction->is_paid)
+    @include('layouts.newNavigation')
+    <div class="relative overflow-x-auto py-10 max-w-screen-xl mx-auto">
+        <div class="flex justify-end pb-5">
+            <div class="flex items-center gap-2">
+                <p>Filter By Date : </p>
+                <select name="date" id="date" class="rounded-xl">
+                    <option value="">Choose Date</option>
+                    @forelse ($product_transactions as $transaction )
+                        <option value="{{ $transaction->created_at }}">{{ $transaction->created_at->isoFormat('DD MMMM YYYY HH:mm') }}</option>
+                    @empty
+                    <option value="No Data">No Data</option>
 
-            <span class="rounded-full py-1 px-5 bg-green-600">
-                <p class="text-base text-white">SUCCESS</p>
-            </span>
-            @else
-
-            <span class="rounded-full py-1 px-5 bg-orange-500">
-                <p class="text-base text-white">PENDING</p>
-            </span>
-            @endif
-            <div class="flex items-center gap-x-3">
-                <a href="{{ route('product_transactions.show', $transaction) }}" class="py-3 px-5 rounded-full text-white bg-indigo-700">View Detail</a>
+                    @endforelse
+                </select>
             </div>
         </div>
-        <hr class="my-3">
-           @empty
-               <p class="text-xl text-center font-bold">No Transaction Found</p>
-           @endforelse
-        </div>
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-center text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        #
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Transaction
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Date
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($product_transactions as $transaction)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td class="text-center font-extrabold">
+                            {{ $loop->iteration }}
+                        </td>
+                        <td class="">
+                            <p class="text-base text-slate-500 text-center">RP. {{ $transaction->total_amount }}</p>
+                        </td>
+                        <td class="overflow-auto">
+                            <p class="text-base text-slate-500 text-center">{{ $transaction->created_at->isoFormat('DD MMMM YYYY HH:mm') }}</p>
+                        </td>
+                        <td class="text-center ">
+                            @if ($transaction->is_paid)
+                                <p class="rounded-full bg-green-600 text-sm md:text-base text-white">SUCCESS</p>
+                            @else
+                                <p class="rounded-full  bg-orange-500 text-sm md:text-base text-white">PENDING</p>
+                            @endif
+
+                        </td>
+                        <td class="flex justify-center">
+                            <div class="flex items-center">
+                                <a href="{{ route('product_transactions.show', $transaction) }}"
+                                    class="py-1 px-2 md:py-2 md:px-4 rounded-full text-white bg-indigo-700 text-center">View Detail</a>
+                            </div>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" class="text-xl text-center">No Transaction Found</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-</div>
 @endsection
-
-

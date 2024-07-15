@@ -20,6 +20,11 @@ class CategoryController extends Controller
         return view('admin.categories.index', compact('categories'));
     }
 
+    public function categories() {
+        $categories = Category::latest()->get();
+        return view('front.categories', compact('categories'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

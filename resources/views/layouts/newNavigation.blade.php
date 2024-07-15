@@ -104,8 +104,8 @@
                     Home
                 </p>
             </a>
-            <a href="#" class="flex flex-col items-center justify-center gap-1 px-1 group">
-                <x-ri-medicine-bottle-line class="text-white w-[30px]" />
+            <a href="{{ route('front.products') }}" class="flex flex-col items-center justify-center gap-1 px-1 group">
+                <x-ri-medicine-bottle-line class="text-slate-400 w-[30px]" />
                 <p
                     class="border-b-4 border-transparent group-[.is-active]:border-primary pb-3 text-xs text-center font-semibold text-grey group-[.is-active]:text-primary">
                     Products
@@ -149,7 +149,7 @@
                 </div>
             @else
                 <a href="{{ route('login') }}" class="flex flex-col items-center justify-center gap-1 px-1 group">
-                    <x-uiw-login class="text-white w-[28px]" />
+                    <x-uiw-login class="text-slate-400 w-[28px]" />
                     <p
                         class="border-b-4 border-transparent group-[.is-active]:border-primary pb-3 text-xs text-center font-semibold text-grey group-[.is-active]:text-primary">
                         Login
