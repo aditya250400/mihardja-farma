@@ -40,7 +40,7 @@
                             {{ $product->name }}
                         </a>
                         <p class="text-sm truncate text-grey">
-                            Rp. {{ $product->price }} /pcs
+                            Rp. {{ number_format($product->price,2,',','.') }} /pcs
                         </p>
                     </div>
                 </div>

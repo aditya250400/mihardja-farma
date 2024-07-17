@@ -46,7 +46,7 @@
         </p>
         <form action="{{ route('front.search') }}" method="GET" id="searchForm"
             class="w-full flex items-center overflow-hidden">
-            <input type="text" name="keyword" id="searchProduct"
+            <input required type="text" name="keyword" id="searchProduct"
                 class="w-full outline-none rounded-s-full border-none focus:ring-0 focus:outline-none focus:border-none"
                 placeholder="Search by product name">
             <button type="submit" class="bg-white h-full rounded-e-[50px] p-2 border-l-2 border-black">Search</button>
@@ -117,7 +117,7 @@
                             {{ $product->name }}
                         </a>
                         <p class="text-sm truncate text-grey">
-                            Rp. {{ $product->price }} /pcs
+                            Rp. {{ number_format($product->price,2,',','.') }} /pcs
                         </p>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
                             {{ $product->name }}
                         </a>
                         <p class="text-sm text-grey">
-                            Rp {{  $product->price }}
+                            Rp {{ number_format($product->price,2,',','.') }}
                         </p>
                     </div>
                     <div class="flex">

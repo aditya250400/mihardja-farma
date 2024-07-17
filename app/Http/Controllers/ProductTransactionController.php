@@ -15,17 +15,59 @@ class ProductTransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
+    {
+        $date = $request->input('date');
+        $user = Auth::user();
+
+        $dates = DB::table('product_transactions')
+            ->select(DB::raw('DATE(created_at) as date'))
+            ->distinct()
+            ->orderBy('date', 'desc')
+            ->get();
+
+
+
+        if ($user->hasRole('buyer')) {
+            $product_transactions = $user->productTransactions()->latest()->when($date, function($query) use ($date) {
+                return $query->whereDate('created_at', '=', $date);
+            })->get();
+
+            $totalTransaction = $product_transactions
+            ->when($date, function($query) use ($date) {
+                return $query->whereDate('created_at', '=', $date);
+            })
+            ->sum('total_amount');
+        } else {
+            $product_transactions = ProductTransaction::latest()
+                ->when($date, function($query) use ($date) {
+                    return $query->whereDate('created_at', '=', $date);
+                })
+                ->get();
+
+            $totalTransaction = $product_transactions
+            ->when($date, function($query) use ($date) {
+                return $query->whereDate('created_at', '=', $date);
+            })
+            ->sum('total_amount');
+
+        }
+
+        return view('admin.product_transactions.index', compact('product_transactions', 'dates', 'totalTransaction'));
+    }
+
+
+    public function searchDate($date = '')
     {
         $user = Auth::user();
 
         if($user->hasRole('buyer')){
             $product_transactions = $user->productTransactions()->latest()->get();
         } else {
-            $product_transactions = ProductTransaction::latest()->get();
+            $product_transactions = ProductTransaction::latest()->where('created_at', 'LIKE', '%'.$date.'%')->get();
 
         }
-        return view('admin.product_transactions.index', compact('product_transactions'));
+        return view('admin.product_transactions.index', compact('product_transactions', 'totalTransaction'));
     }
 
     /**

@@ -30,7 +30,7 @@
                 {{ $product->name }}
               </a>
               <p class="text-sm text-grey">
-                Rp {{ $product->price }}
+                Rp {{ number_format($product->price,2,',','.') }}
 
               </p>
             </div>

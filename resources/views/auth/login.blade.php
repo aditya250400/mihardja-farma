@@ -31,12 +31,16 @@
             <label for="email" class="text-base font-semibold">Email Address</label>
             <input type="email" name="email" id="email__"
               class="form-input bg-[url({{ asset('svgs/ic-email.svg') }})]" placeholder="Your email address">
+            <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-500 font-bold" />
+
           </div>
           <!-- Password -->
           <div class="flex flex-col gap-2.5">
             <label for="password" class="text-base font-semibold">Password</label>
             <input type="password" name="password" id="password__"
               class="form-input bg-[url({{ asset('svgs/ic-lock.svg') }})]" placeholder="Protect your password">
+            <x-input-error :messages="$errors->get('password')" class="mt-2 text-red-500 font-bold" />
+
           </div>
           <button type="submit" class="inline-flex text-white font-bold text-base bg-primary rounded-full whitespace-nowrap px-[30px] py-3 justify-center items-center">
             Sign In

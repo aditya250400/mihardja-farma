@@ -79,7 +79,7 @@
     <div class="flex items-center justify-between">
         <div class="flex flex-col gap-0.5">
             <p class="text-lg min-[350px]:text-2xl font-bold">
-                Rp {{ $product->price }}
+                Rp {{ number_format($product->price,2,',','.') }}
             </p>
             <p class="text-sm text-grey">
                 /quantity
