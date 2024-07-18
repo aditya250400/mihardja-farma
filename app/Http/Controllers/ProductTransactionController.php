@@ -33,7 +33,7 @@ class ProductTransactionController extends Controller
                 return $query->whereDate('created_at', '=', $date);
             })->get();
 
-            $totalTransaction = $product_transactions
+            $totalTransaction = $user->productTransactions()
             ->when($date, function($query) use ($date) {
                 return $query->whereDate('created_at', '=', $date);
             })
@@ -45,7 +45,7 @@ class ProductTransactionController extends Controller
                 })
                 ->get();
 
-            $totalTransaction = $product_transactions
+            $totalTransaction = ProductTransaction::latest()
             ->when($date, function($query) use ($date) {
                 return $query->whereDate('created_at', '=', $date);
             })

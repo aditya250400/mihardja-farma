@@ -7,7 +7,7 @@
             <div class="flex items-center gap-2">
                 <p>Filter By Date : </p>
                 <form action="{{ route('product_transactions.index') }}" method="GET" class="flex gap-2">
-                    <select name="date" id="date" class="rounded-xl">
+                    <select name="date" id="date" class="rounded-xl" required>
                         <option value="">Choose Date</option>
                         @forelse ($dates as $date)
                             <option value="{{ $date->date }}" {{ request('date') == $date->date ? 'selected' : '' }}>
