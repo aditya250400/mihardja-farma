@@ -90,7 +90,7 @@ class ProductController extends Controller
     {
         {
             $validated = $request->validate([
-                'name' => 'required|string|max:255',
+                'name' => 'required|string|max:255|unique:products,name,'.$product->id,
                 'price' => 'required|integer',
                 'stock' => 'required|integer',
                 'code_product' => 'required|max:15',

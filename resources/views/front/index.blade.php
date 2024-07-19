@@ -21,19 +21,20 @@
                 </p>
             </div>
         </div>
-        {{-- <div class="flex items-center gap-[10px]">
-            <button type="button" class="p-2 bg-white rounded-full">
+        <div class="flex items-center gap-[10px] relative">
+            {{-- <button type="button" class="p-2 bg-white rounded-full">
                 <span class="relative">
                     <!-- notification -->
                     <img src="{{ asset('svgs/ic-notification.svg') }}" class="size-5" alt="">
                     <!-- notification dot -->
                     <span class="block rounded-full size-1.5 bg-primary absolute top-0 right-0 -translate-x-1/2"></span>
                 </span>
-            </button>
-            <button type="button" class="p-2 bg-white rounded-full">
+            </button> --}}
+            <a href="{{ route('carts.index') }}" class="p-2 bg-white rounded-full" >
                 <img src="{{ asset('svgs/ic-shopping-bag.svg') }}" class="size-5" alt="">
-            </button>
-        </div> --}}
+                <p class="absolute -top-2 -right-2 w-fit h-5 text-xs bg-red-600 text-white rounded-full flex items-center justify-center p-1">{{ $carts }}</p>
+            </a>
+        </div>
     </section>
 
     @endif

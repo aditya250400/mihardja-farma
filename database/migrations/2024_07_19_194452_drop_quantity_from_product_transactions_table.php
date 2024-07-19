@@ -23,7 +23,6 @@ return new class extends Migration
     {
         Schema::table('product_transactions', function (Blueprint $table) {
             $table->unsignedInteger('quantity')->default(1)->after('total_amount');
-
         });
     }
 };

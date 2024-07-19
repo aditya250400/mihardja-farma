@@ -33,6 +33,11 @@
           </p>
           <p class="text-sm text-grey product-price" data-price="{{ $cart->product->price }}">
           </p>
+          <div class="flex items-center gap-3 p-2">
+            <button type="button" class="text-lg w-[30px] rounded-full bg-red-600 text-white text-center" id="decreaseQuantity">-</button>
+            <div id="quantityValue">1</div>
+            <button type="button" class="text-lg w-[30px] rounded-full bg-blue-600 text-white text-center" id="increaseQuantity">+</button>
+          </div>
         </div>
         <form action="{{ route('carts.destroy', $cart) }}" method="POST">
             @csrf
@@ -195,6 +200,7 @@
             </div>
           <input type="file" name="proof" id="proof_of_payment__"
             class="">
+            <x-input-error :messages="$errors->get('proof')" class="mt-2 text-red-500 font-bold" />
         </div>
       </div>
       </div>

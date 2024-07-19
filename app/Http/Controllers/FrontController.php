@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
     public function index() {
+        $carts = 0;
+       if(Auth::check()) {
+        $carts = Auth::user()->carts()->count();
+       }
         $products = Product::with('category')->latest()->take(4)->get();
         $categories = Category::latest()->take(4)->get();
         $mostPurchased = Product::withCount('transactionDetails')->orderBy('transaction_details_count', 'DESC')->take(3)->get();
 
-        return view('front.index', compact('products', 'categories', 'mostPurchased'));
+        return view('front.index', compact('products', 'categories', 'mostPurchased', 'carts'));
     }
 
     public function details(Product $product) {

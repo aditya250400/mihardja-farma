@@ -39,8 +39,10 @@
           <input type="password" name="password_confirmation" id="password_confirmation"
             class="form-input bg-[url({{ asset('svgs/ic-lock.svg') }})]" placeholder="Protect your Password" value="{{ old('password_confirmation') }}">
 
-          </div>
-          <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-500 font-bold" />
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-red-500 font-bold" />
+        </div>
+
+
         <button type="submit" class="inline-flex text-white font-bold text-base bg-primary rounded-full whitespace-nowrap px-[30px] py-3 justify-center items-center">
           Create My Account
         </button>

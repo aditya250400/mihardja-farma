@@ -33,7 +33,7 @@
                 <div class="mt-4">
                     <x-input-label for="stock" :value="__('Stock')" />
                     <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock"
-                        :value="old('stock')"  autofocus autocomplete="stock" />
+                        :value="old('stock')" value="{{ $product->stock }}"  autofocus autocomplete="stock" />
                     <x-input-error :messages="$errors->get('stock')" class="mt-2" />
                 </div>
 
@@ -42,7 +42,7 @@
                  <div class="mt-4">
                     <x-input-label for="code_product" :value="__('Product Code')" />
                     <x-text-input id="code_product" class="block mt-1 w-full" type="text" name="code_product"
-                        :value="old('code_product')"  autofocus autocomplete="code_product" />
+                        :value="old('code_product')"  autofocus autocomplete="code_product" value="{{ $product->code_product }}" />
                     <x-input-error :messages="$errors->get('code_product')" class="mt-2" />
                 </div>
 
