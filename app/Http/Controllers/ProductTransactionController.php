@@ -122,6 +122,11 @@ class ProductTransactionController extends Controller
             $newTransaction = ProductTransaction::create($validated);
 
             foreach($cartItems as $item) {
+
+                $product = $item->product;
+                $product->stock -= $item->quantity;
+                $product->save();
+
                 TransactionDetail::create([
                     'product_transaction_id' => $newTransaction->id,
                     'product_id' => $item->product->id,
@@ -145,6 +150,9 @@ class ProductTransactionController extends Controller
             throw $error;
         }
     }
+
+
+
 
     /**
      * Display the specified resource.

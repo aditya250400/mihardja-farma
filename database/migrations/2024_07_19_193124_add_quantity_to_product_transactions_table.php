@@ -12,7 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('product_transactions', function (Blueprint $table) {
-            $table->dropColumn('quantity');
+            $table->unsignedInteger('quantity')->default(1)->after('total_amount');
+
         });
     }
 
@@ -22,8 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('product_transactions', function (Blueprint $table) {
-            $table->unsignedInteger('quantity')->default(1)->after('total_amount');
-
+            //
         });
     }
 };

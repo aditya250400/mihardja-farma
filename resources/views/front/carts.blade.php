@@ -33,11 +33,12 @@
           </p>
           <p class="text-sm text-grey product-price" data-price="{{ $cart->product->price }}">
           </p>
-          <div class="flex items-center gap-3 p-2">
+          {{-- quantity --}}
+          {{-- <div class="flex items-center gap-3 p-2">
             <button type="button" class="text-lg w-[30px] rounded-full bg-red-600 text-white text-center" id="decreaseQuantity">-</button>
             <div id="quantityValue">1</div>
             <button type="button" class="text-lg w-[30px] rounded-full bg-blue-600 text-white text-center" id="increaseQuantity">+</button>
-          </div>
+          </div> --}}
         </div>
         <form action="{{ route('carts.destroy', $cart) }}" method="POST">
             @csrf
