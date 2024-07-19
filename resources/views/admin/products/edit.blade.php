@@ -7,13 +7,6 @@
 <div class="py-12">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm p-5 sm:rounded-lg">
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="py-3 w-full rounded-3xl text-white bg-slate-800">
-                       {{ $error }}
-                    </div>
-                @endforeach
-            @endif
 
             <form method="POST" action="{{ route('admin.products.update', $product) }}" enctype="multipart/form-data">
                 @csrf
@@ -33,6 +26,24 @@
                     <x-text-input id="price" class="block mt-1 w-full" type="number" name="price"
                         :value="old('price')"  value="{{ $product->price }}" required autofocus autocomplete="price" />
                     <x-input-error :messages="$errors->get('price')" class="mt-2" />
+                </div>
+
+                {{-- Stock --}}
+
+                <div class="mt-4">
+                    <x-input-label for="stock" :value="__('Stock')" />
+                    <x-text-input id="stock" class="block mt-1 w-full" type="number" name="stock"
+                        :value="old('stock')"  autofocus autocomplete="stock" />
+                    <x-input-error :messages="$errors->get('stock')" class="mt-2" />
+                </div>
+
+                 {{-- Product Code --}}
+
+                 <div class="mt-4">
+                    <x-input-label for="code_product" :value="__('Product Code')" />
+                    <x-text-input id="code_product" class="block mt-1 w-full" type="text" name="code_product"
+                        :value="old('code_product')"  autofocus autocomplete="code_product" />
+                    <x-input-error :messages="$errors->get('code_product')" class="mt-2" />
                 </div>
 
                 {{-- Category --}}

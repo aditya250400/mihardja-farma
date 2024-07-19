@@ -20,6 +20,12 @@
                         Product Name
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        Product Code
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Stock
+                    </th>
+                    <th scope="col" class="px-6 py-3">
                         Category
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -44,6 +50,14 @@
                                     <p class="text-base text-slate-500">RP. {{ $product->price }}</p>
                                 </div>
                             </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="text-base text-center text-slate-500">{{ $product->code_product }}</p>
+
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="text-base text-center text-slate-500">{{ $product->stock }}</p>
+
                         </td>
                         <td class="px-6 py-4">
                             <p class="text-base text-center text-slate-500">{{ $product->category->name }}</p>
