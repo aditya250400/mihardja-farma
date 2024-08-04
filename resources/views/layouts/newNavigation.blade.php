@@ -10,9 +10,7 @@
             @auth
                 <div class="hidden md:flex md:gap-2">
                     @role('owner')
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
+
                         <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                             {{ __('Manage Products') }}
                         </x-nav-link>
@@ -50,9 +48,6 @@
                         </div>
                         <div class="md:hidden  flex flex-col gap-2 px-4 ">
                             @role('owner')
-                                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                    {{ __('Dashboard') }}
-                                </x-nav-link>
                                 <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
                                     {{ __('Manage Products') }}
                                 </x-nav-link>
@@ -142,7 +137,7 @@
                       <li>
                         <form action="{{ route('logout') }}" class="px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" method="post">
                             @csrf
-                        <button type="submit" class="">Sign out</button>
+                        <button type="submit" class="w-full text-start">Sign out</button>
                         </form>
                       </li>
                     </ul>
